@@ -14,6 +14,8 @@ public class SleepyVoid {
                     "\\   _ _   / \n";
         System.out.println("Hello... \n" + logo + "I'm void, what can I do for you..?");
         Scanner scanInputs = new Scanner(System.in);
+        String[] storedObjects = new String[100];
+        int count = 0;
         boolean isChatRunning = true;
         while(isChatRunning){
             String userInput = scanInputs.nextLine().trim();
@@ -21,9 +23,17 @@ public class SleepyVoid {
             if (userInput.equalsIgnoreCase("bye")){
                 isChatRunning = false;
             }
+            else if (userInput.equalsIgnoreCase("list")){
+                System.out.println("            /ᐠ˵- -˵マ: ");
+                for (int i = 0; i<count; i++){
+                    System.out.println("                " + (i+1) + ". " + storedObjects[i]);
+                }
+            }
             else {
+                storedObjects[count] = userInput;
+                count++;
                 System.out.println("            " +
-                        "/ᐠ˵- -˵マ: " + userInput);
+                        "/ᐠ˵- -˵マ added: " + userInput);
             }
         }
         System.out.println("            "
