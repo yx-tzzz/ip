@@ -1,14 +1,15 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class SleepyVoid {
     private static final String LEADING_SPACE = "                ";
     private static final String TASK_COUNT_MESSAGE = "          Now there's %d pending task(s) in the list.";
 
-    public static void printTask(int taskCount, Task[] storedObjects) {
-        System.out.println(LEADING_SPACE + (taskCount) + ". " + storedObjects[taskCount-1].toString());
+    public static void printTask(int taskCount, ArrayList<Task> storedObjects) {
+        System.out.println(LEADING_SPACE + (taskCount) + ". " + storedObjects.get(taskCount-1).toString());
     }
 
-    public static void printAddedTask(int taskCount, Task[] storedObjects) {
+    public static void printAddedTask(int taskCount, ArrayList<Task> storedObjects) {
         System.out.println("            " + "/ᐠ˵+ +˵マ added: " );
         printTask(taskCount, storedObjects);
         System.out.printf((TASK_COUNT_MESSAGE) + "%n", taskCount);
@@ -23,7 +24,7 @@ public class SleepyVoid {
         System.out.println("Hello... \n" + logo + "I'm void, what can I do for you..?");
 
         Scanner scanInputs = new Scanner(System.in);
-        Task[] storedObjects = new Task[100];
+        ArrayList<Task> storedObjects = new ArrayList<Task>();
         int taskCount = 0;
         boolean isChatRunning = true;
 
@@ -46,34 +47,34 @@ public class SleepyVoid {
 
                 case "mark":
                     int objectIndex = Integer.parseInt(inputParts[1]) - 1;
-                    storedObjects[objectIndex].markAsDone();
+                    storedObjects.get(objectIndex).markAsDone();
                     System.out.print("            /ᐠ˵, ,˵マ ");
                     System.out.println("Nice! I've marked this task as done:");
                     printTask(objectIndex + 1, storedObjects);
                     break;
 
                 case "todo":
-                    storedObjects[taskCount] = new Todos(inputParts[1].trim());
+                    storedObjects.add(new Todos(inputParts[1].trim()));
                     taskCount++;
                     printAddedTask(taskCount, storedObjects);
                     break;
 
                 case "event":
                     String[] eventParts = inputParts[1].split(" /from | /to ",3);
-                    storedObjects[taskCount] = new Events(eventParts[0], eventParts[1], eventParts[2]);
+                    storedObjects.add(new Events(eventParts[0], eventParts[1], eventParts[2]));
                     taskCount++;
                     printAddedTask(taskCount, storedObjects);
                     break;
 
                 case "deadline":
                     String[] deadlineParts = inputParts[1].split(" /by ", 2);
-                    storedObjects[taskCount] = new Deadlines(deadlineParts[0], deadlineParts[1]);
+                    storedObjects.add(new Deadlines(deadlineParts[0], deadlineParts[1]));
                     taskCount++;
                     printAddedTask(taskCount, storedObjects);
                     break;
 
                 default:
-                    storedObjects[taskCount] = new Task(userInput);
+                    storedObjects.add(new Task(userInput));
                     taskCount++;
                     printAddedTask(taskCount, storedObjects);
             }
