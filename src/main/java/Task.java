@@ -9,11 +9,11 @@ public class Task {
 
     }
 
-    public String getStatusIcon() {
+    protected String getStatusIcon() {
         return (isDone ? "X" : " ");
     }
 
-    public String getTaskType() {
+    protected String getTaskType() {
         return " ";
     };
 
@@ -22,11 +22,11 @@ public class Task {
         return "[" + getTaskType() + "][" + getStatusIcon() + "] " + description;
     }
 
-    public void markAsDone(){
+    protected void markAsDone(){
         this.isDone = true;
     }
 
-    public void unmarkCompletedTask() {
+    protected void unmarkCompletedTask() {
         this.isDone = false;
     }
 
