@@ -1,4 +1,4 @@
-package sleepyvoid;
+package sleepyvoid.task;
 
 public class Todos extends Task {
     

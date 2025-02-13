@@ -1,4 +1,4 @@
-package sleepyvoid;
+package sleepyvoid.task;
 
 public class Events extends Task {
     protected String from;

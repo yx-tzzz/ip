@@ -1,5 +1,10 @@
 package sleepyvoid;
 
+import sleepyvoid.task.Deadlines;
+import sleepyvoid.task.Events;
+import sleepyvoid.task.Task;
+import sleepyvoid.task.Todos;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 

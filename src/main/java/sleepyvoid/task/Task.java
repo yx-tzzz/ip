@@ -1,4 +1,4 @@
-package sleepyvoid;
+package sleepyvoid.task;
 
 public class Task {
     protected String description;
@@ -24,7 +24,7 @@ public class Task {
         return "[" + getTaskType() + "][" + getStatusIcon() + "] " + description;
     }
 
-    protected void markAsDone(){
+    public void markAsDone(){
         this.isDone = true;
     }
 

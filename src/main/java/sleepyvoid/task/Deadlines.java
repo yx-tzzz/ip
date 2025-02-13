@@ -1,4 +1,4 @@
-package sleepyvoid;
+package sleepyvoid.task;
 
 public class Deadlines extends Task {
     protected String deadline;
