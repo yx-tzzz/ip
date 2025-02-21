@@ -1,47 +1,32 @@
 import exception.InvalidDeadlineException;
 import exception.InvalidEventException;
 import exception.InvalidTodoException;
+import exception.InvalidRemoveException;
+import utility.Strings;
+import utility.Print;
 
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class SleepyVoid {
-    private static final String LEADING_SPACE = "                ";
-    private static final String TASK_COUNT_MESSAGE = "          Now there's %d pending task(s) in the list.";
 
     public static void printTask(int taskCount, ArrayList<Task> storedObjects) {
-        System.out.println(LEADING_SPACE + (taskCount) + ". " + storedObjects.get(taskCount-1).toString());
+        System.out.println(Strings.LEADING_SPACE + (taskCount) + ". " + storedObjects.get(taskCount-1).toString());
     }
 
     public static void printAddedTask(int taskCount, ArrayList<Task> storedObjects) {
-        System.out.println("            " + "/ᐠ˵+ +˵マ added: " );
+        System.out.println("            /ᐠ˵+ +˵マ added: " );
         printTask(taskCount, storedObjects);
-        System.out.printf((TASK_COUNT_MESSAGE) + "%n", taskCount);
+        System.out.printf((Strings.TASK_COUNT_MESSAGE) + "%n", taskCount);
     }
 
-    public static void printCommands() {
 
-        System.out.println(LEADING_SPACE + "To add a task in the list, type: todo XX");
-        System.out.println(LEADING_SPACE + "To add an event in the list, type: event XX /from XX /to XX");
-        System.out.println(LEADING_SPACE + "To add a task with a deadline into the list, type: deadline XX /by XX");
-        System.out.println(LEADING_SPACE + "To mark an item as done, type: mark (the task number)");
-        System.out.println(LEADING_SPACE + "To view the current list, type: list");
-        System.out.println(LEADING_SPACE + "To end the conversation with me, type bye \n");
-        System.out.println(LEADING_SPACE + "Ps Command words are not case sensitive!!");
-        System.out.println(LEADING_SPACE + "XX in the examples are your inputs");
-        System.out.println(LEADING_SPACE + "Hope this makes things easier /ᐠ˵≡ ≡˵マ");
-
-    }
 
     public static void main(String[] args) {
-        String logo = "   /\\_/\\  \n" +
-                     "  / _ _ \\ \n" +
-                    " /       \\ \n" +
-                    "|   >o<   | \n" +
-                    "\\   _ _   / \n";
-        System.out.println("Hello... \n" + logo + "I'm void, what can I do for you..?");
+
+        System.out.println("Hello... \n" + Strings.LOGO + "I'm void, what can I do for you..?");
         System.out.println("Before I forget, here's a guide I've made to help you, here you gooo");
-        printCommands();
+        Print.printCommands();
 
         Scanner scanInputs = new Scanner(System.in);
         ArrayList<Task> storedObjects = new ArrayList<Task>();
@@ -59,11 +44,11 @@ public class SleepyVoid {
                     break;
 
                 case "list":
-                    System.out.println("            /ᐠ˵= =˵マ: ");
+                    System.out.println(Strings.LIST_VOID);
                     if (storedObjects.isEmpty()) {
-                        System.out.println(LEADING_SPACE + "List is currently empty, would you like to add some tasks into the list? ^ ，，^");
-                        System.out.println(LEADING_SPACE + "Here's the guide on how to use me in case you forgotz\n");
-                        printCommands();
+                        System.out.println(Strings.LEADING_SPACE + "List is currently empty, would you like to add some tasks into the list? ^ ，，^");
+                        System.out.println(Strings.LEADING_SPACE + "Here's the guide on how to use me in case you forgotz\n");
+                        Print.printCommands();
                     } else {
                         for (int i = 0; i < taskCount; i++) {
                             printTask(i + 1, storedObjects);
@@ -79,12 +64,12 @@ public class SleepyVoid {
                         System.out.println("Nice! I've marked this task as done:");
                         printTask(objectIndex + 1, storedObjects);
                     } catch (IndexOutOfBoundsException e) {
-                        System.out.print("            /ᐠ˵x x˵マ ");
+                        System.out.print(Strings.ERROR_VOID);
                         System.out.println("Invalid as there are " + taskCount +
                                 " items in the list, please select a number in the range to mark item as done" );
                     } catch (NumberFormatException e) {
-                        System.out.print("            /ᐠ˵x x˵マ ");
-                        System.out.println( "Invalid input, please enter an integer from 1 to " + taskCount + "after the input command mark" );
+                        System.out.print(Strings.ERROR_VOID);
+                        System.out.println("Invalid input, please enter an integer from 1 to " + taskCount + "after the input command mark" );
                     }
                     break;
 
@@ -98,8 +83,8 @@ public class SleepyVoid {
                         taskCount++;
                         printAddedTask(taskCount, storedObjects);
                     } catch (InvalidTodoException e) {
-                        System.out.print("            /ᐠ˵x x˵マ ");
-                        System.out.println("Missing input after the todo command, please key in the task after the todo command (eg todo XX)");
+                        System.out.print(Strings.ERROR_VOID);
+                        InvalidTodoException.printErrorMessage();
                     }
                     break;
 
@@ -116,9 +101,8 @@ public class SleepyVoid {
                         taskCount++;
                         printAddedTask(taskCount, storedObjects);
                     } catch (InvalidEventException e) {
-                        System.out.print("            /ᐠ˵x x˵マ ");
-                        System.out.println(" Invalid input format \n" + LEADING_SPACE
-                                + "To add an event to the list, type: event XX /from XX /to XX (Don't miss out the /!..)");
+                        System.out.print(Strings.ERROR_VOID);
+                        InvalidEventException.printErrorMessage();
                     }
                     break;
 
@@ -135,11 +119,37 @@ public class SleepyVoid {
                         taskCount++;
                         printAddedTask(taskCount, storedObjects);
                     } catch (InvalidDeadlineException e) {
-                        System.out.print("            /ᐠ˵x x˵マ ");
-                        System.out.println("Invalid input format \n " +
-                                LEADING_SPACE + "To add a deadline to the list, type: deadline XX /by XX (Don't miss out the /!..)");
+                        System.out.print(Strings.ERROR_VOID);
+                        InvalidDeadlineException.printErrorMessage();
                     }
                     break;
+
+                case "remove":
+                    try {
+                        if (inputParts.length < 2) {
+                            throw new InvalidRemoveException();
+                        }
+                        int indexToRemove = Integer.parseInt(inputParts[1]) - 1;
+                        System.out.println("            /ᐠ˵- -˵マ removed: " + indexToRemove + "." + storedObjects.get(indexToRemove).toString());
+                        storedObjects.remove(indexToRemove);
+                        taskCount--;
+                    } catch (InvalidRemoveException e) {
+                        System.out.print(Strings.ERROR_VOID);
+                        InvalidRemoveException.printErrorMessage();
+                    } catch (NumberFormatException e) {
+                        System.out.print(Strings.ERROR_VOID);
+                        System.out.println("Invalid input format, please ensure the input after the command is a number \n " +
+                                Strings.LEADING_SPACE + "eg To remove a task to the list, type: remove [task index]");
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.print(Strings.ERROR_VOID);
+                        System.out.println("Invalid input format, please ensure the number is an existing task number\n " +
+                                Strings.LEADING_SPACE + "eg To remove a task to the list, type: remove [task index]");
+                    }
+                    break;
+
+                default:
+                    System.out.println(Strings.LEADING_SPACE + inputParts[0] + "is an invalid command, please use any of the commands listed below");
+                    Print.printCommands();
 
             }
         }
