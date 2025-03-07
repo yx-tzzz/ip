@@ -26,8 +26,8 @@ public class Task {
         this.isDone = true;
     }
 
-    protected void unmarkCompletedTask() {
-        this.isDone = false;
+    public String toFileFormat() {
+        return (isDone ? "Completed ^* *^" : "Yet to do...") + " | " + description;
     }
 
 }
