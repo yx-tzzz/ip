@@ -9,4 +9,10 @@ public class Todos extends Task {
         return "T";
     };
 
+    @Override
+    public String toFileFormat() {
+        return "Todo | " + super.toFileFormat();
+    }
 }
+
+

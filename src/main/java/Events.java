@@ -18,4 +18,8 @@ public class Events extends Task {
         return super.toString() + " (from: " + from + " to: " + to + ")";
     }
 
+    @Override
+    public String toFileFormat() {
+        return "Event | " + super.toFileFormat() + " | " + from + " ~ " + to;
+    }
 }

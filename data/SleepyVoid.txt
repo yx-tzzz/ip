@@ -1,0 +1,4 @@
+Deadline | Yet to do... | eh | 2
+Event | Yet to do... | ah | 3 ~ 5
+Todo | Completed ^* *^ | oh
+Todo | Yet to do... | uh

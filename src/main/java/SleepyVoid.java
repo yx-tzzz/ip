@@ -29,8 +29,10 @@ public class SleepyVoid {
         Print.printCommands();
 
         Scanner scanInputs = new Scanner(System.in);
+        Files storage = new Files();
         ArrayList<Task> storedObjects = new ArrayList<Task>();
-        int taskCount = 0;
+        storedObjects = storage.loadTasks();
+        int taskCount = storedObjects.size();
         boolean isChatRunning = true;
 
         while(isChatRunning){
@@ -40,6 +42,7 @@ public class SleepyVoid {
 
             switch(command) {
                 case "bye":
+                    storage.saveTasks(storedObjects);
                     isChatRunning = false;
                     break;
 
