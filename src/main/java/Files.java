@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import task.*;
+
 public class Files{
     private static final String FILE_PATH = "data/SleepyVoid.txt";
 

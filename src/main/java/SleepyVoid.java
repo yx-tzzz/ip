@@ -2,8 +2,8 @@ import exception.InvalidDeadlineException;
 import exception.InvalidEventException;
 import exception.InvalidTodoException;
 import exception.InvalidRemoveException;
-import utility.Strings;
-import utility.Print;
+import utility.*;
+import task.*;
 
 import java.util.Scanner;
 import java.util.ArrayList;

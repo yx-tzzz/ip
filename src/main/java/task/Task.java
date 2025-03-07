@@ -1,3 +1,5 @@
+package task;
+
 public class Task {
     protected String description;
     protected boolean isDone;
@@ -22,7 +24,7 @@ public class Task {
         return "[" + getTaskType() + "][" + getStatusIcon() + "] " + description;
     }
 
-    protected void markAsDone(){
+    public void markAsDone(){
         this.isDone = true;
     }
 
