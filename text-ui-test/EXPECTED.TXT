@@ -12,11 +12,15 @@ I'm void, what can I do for you..?
                 2. [D][ ] run (by: Sunday)
           Now there's 2 pending task(s) in the list.
             /ᐠ˵+ +˵マ added:
-                1. [E][ ] Dinner (from: 6pm to: 8pm)
-          Now there's 1 pending task(s) in the list.
+                3. [E][ ] Dinner (from: 6pm to: 8pm)
+          Now there's 3 pending task(s) in the list.
             /ᐠ˵, ,˵マ Nice! I've marked this task as done:
                 1. [T][X] Read Book
             /ᐠ˵= =˵マ:
                 1. [T][X] Read Book
                 2. [D][ ] run (by: Sunday)
+                3. [E][ ] Dinner (from: 6pm to: 8pm)
+            /ᐠ˵- -˵マ removed: 1. [T][X] Read Book
+            /ᐠ˵o o˵マ Here are the matching tasks in your list:
+                1. [E][ ] Dinner (from: 6pm to: 8pm)
             /ᐠ˵_ _˵マ ᶻ𝘇𐰁: Bye, see you soonᶻ 𝘇 𐰁
