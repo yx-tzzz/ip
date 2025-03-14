@@ -49,4 +49,8 @@ public class Ui extends Strings{
             printTask(i + 1, taskList);
         }
     }
+
+    public void printMessage (String string) {
+        System.out.println(string);
+    }
 }

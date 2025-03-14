@@ -3,4 +3,7 @@ deadline run /by Sunday
 event Dinner /from 6pm /to 8pm
 mark 1
 list
+remove 1
+find Dinner
+bye
 
