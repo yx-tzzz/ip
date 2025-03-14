@@ -32,5 +32,9 @@ public class Task {
         return (isDone ? "Completed ^* *^" : "Yet to do...") + " | " + description;
     }
 
+    public String getTask() {
+        return description;
+    }
+
 }
 
