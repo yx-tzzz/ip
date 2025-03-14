@@ -106,4 +106,5 @@ public class Storage {
             System.out.println(Strings.ERROR_VOID + " Error saving tasks to file: " + FILE_PATH);
         }
     }
+
 }
