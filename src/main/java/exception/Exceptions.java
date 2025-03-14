@@ -1,4 +1,4 @@
-package sleepyvoid.exception;
+package exception;
 
 public class Exceptions {
 }

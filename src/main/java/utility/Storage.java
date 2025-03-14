@@ -1,3 +1,5 @@
+package utility;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -7,10 +9,10 @@ import java.util.Scanner;
 
 import task.*;
 
-public class Files{
+public class Storage {
     private static final String FILE_PATH = "data/SleepyVoid.txt";
 
-    public Files() {
+    public Storage() {
         File dataDir = new File("./data");
         if (!dataDir.exists()) {
             dataDir.mkdir();
@@ -75,7 +77,7 @@ public class Files{
     }
 
 
-    public void saveTasks(ArrayList<Task> tasks) {
+    public void saveTasks(TaskList tasks) {
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             for (Task task : tasks) {
                 writer.write(task.toFileFormat() + "\n");
