@@ -9,9 +9,17 @@ import java.util.Scanner;
 
 import task.*;
 
+/**
+ * The Storage class handles file operations.
+ * It ensures that tasks are loaded and saved to a text file.
+ */
 public class Storage {
     private static final String FILE_PATH = "data/SleepyVoid.txt";
 
+    /**
+     * Constructs a new Storage instance, ensuring the storage file exists and reading tasks from it.
+     * Creates the data directory if it does not already exist.
+     */
     public Storage() {
         File dataDir = new File("./data");
         if (!dataDir.exists()) {
@@ -19,6 +27,13 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads tasks from the specified text file.
+     * If the file does not exist, an empty list is returned.
+     * The file is expected to contain tasks in a specific format, and each task is parsed accordingly.
+     *
+     * @return An {@link ArrayList} of {@link Task} objects loaded from the file.
+     */
     public ArrayList<Task> loadTasks() {
         ArrayList<Task> savedTasks = new ArrayList<>();
         File textFile = new File(FILE_PATH);
@@ -76,14 +91,19 @@ public class Storage {
         return savedTasks;
     }
 
-
+    /**
+     * Saves the current list of tasks to the specified text file.
+     * Each task is written to the file in a specific format.
+     *
+     * @param tasks The {@link TaskList} containing the tasks to be saved
+     */
     public void saveTasks(TaskList tasks) {
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             for (Task task : tasks) {
                 writer.write(task.toFileFormat() + "\n");
             }
         } catch (IOException e) {
-            System.out.println("            /ᐠ˵x x˵マ Error saving tasks to file: " + FILE_PATH);
+            System.out.println(Strings.ERROR_VOID + " Error saving tasks to file: " + FILE_PATH);
         }
     }
 

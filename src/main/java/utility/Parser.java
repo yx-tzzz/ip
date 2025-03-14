@@ -5,18 +5,39 @@ import task.Deadlines;
 import task.Events;
 import task.Todos;
 
+
+/**
+ * The Parser class processes user commands and executes the corresponding actions.
+ * It interacts with the TaskList, Storage, and Ui classes to manage tasks, save them and provide feedback to the user.
+ */
 public class Parser {
 
     private TaskList taskList;
     private Storage storage;
     private Ui ui;
 
+
+    /**
+     * Constructs a new Parser instance with the specified TaskList, Storage, and Ui.
+     *
+     * @param taskList The TaskList containing the tasks to be managed.
+     * @param storage  The Storage object used to save tasks to a file.
+     * @param ui       The Ui object used to interact with the user.
+     */
     public Parser(TaskList taskList, Storage storage, Ui ui) {
         this.taskList = taskList;
         this.storage = storage;
         this.ui = ui;
     }
 
+    /**
+     * Parses the user input and executes the corresponding command.
+     * The method handles various commands such as adding tasks, marking tasks as done, listing tasks,
+     * removing tasks, and saving tasks before exiting the application.
+     *
+     * @param userInput The input provided by the user.
+     * @return {@code true} if the application should continue running, {@code false} if the user has chosen to exit.
+     */
     public boolean parseCommand(String userInput) {
         String[] inputParts = userInput.split(" ",2);
         String command = inputParts[0].toLowerCase();
