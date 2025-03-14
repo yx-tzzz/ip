@@ -1,5 +1,8 @@
 package utility;
 
+/**
+ * Stores commonly used Strings, and ASCII art of SleepyVoid that are used depending on the user input
+ */
 public class Strings {
     public static final String LEADING_SPACE = "                ";
     public static final String TASK_COUNT_MESSAGE = "          Now there's %d pending task(s) in the list.";

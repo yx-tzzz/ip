@@ -1,12 +1,12 @@
-import exception.InvalidDeadlineException;
-import exception.InvalidEventException;
-import exception.InvalidTodoException;
-import exception.InvalidRemoveException;
 import utility.*;
-import task.*;
 
 import java.util.Scanner;
-import java.util.ArrayList;
+
+/**
+ * The SleepyVoid class is a chatbot named SleepyVoid that manages all tasks.
+ * Represents a chatbot SleepyVoid that manages task list, storage, ui and parser objects
+ * to manage tasks inputted by the user.
+ */
 
 public class SleepyVoid {
     private static TaskList taskList;
@@ -14,7 +14,10 @@ public class SleepyVoid {
     private static Storage storage;
     private static Parser parser;
 
-
+    /**
+     * Creates a new instance of {@code SleepyVoid}.
+     * Initializes the user interface, storage, parser, and loads tasks from the text file.
+     */
     public SleepyVoid() {
         ui = new Ui();
         storage = new Storage();
@@ -22,6 +25,11 @@ public class SleepyVoid {
         parser = new Parser(taskList, storage, ui);
     }
 
+    /**
+     * Runs SleepyVoid chatbot application.
+     * Displays a welcome message, shows available commands, then continuously processes user commands.
+     * Chatbot ends and exits when the user inputs "bye".
+     */
     public void run() {
         ui.printWelcomeMessage();
         ui.printCommands();
@@ -36,6 +44,11 @@ public class SleepyVoid {
         scanInputs.close();
     }
 
+    /**
+     * The entry point of the program.
+     * Initializes and runs the chatbot.
+     * @param args Command-line arguments not used in this application.
+     */
     public static void main(String[] args) {
         new SleepyVoid().run();
     }
